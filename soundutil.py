@@ -1,3 +1,4 @@
+import pygame
 import libaudioverse
 
 class SoundPlayer:
@@ -40,7 +41,8 @@ class SoundSource(SoundPlayer):
 		self.buffer_player.connect(0, self.source, 0)
 	def move(self, vel, dt):
 		"""Moves the sound by adding whatever velocity vector you pass it."""
-		self.position += vel*dt
+		pygame.Vector3(self.position)
+		self.position += pygame.Vector3(vel)*dt
 		self.source.position = tuple(self.position)
 		
 	
@@ -58,5 +60,6 @@ class Listener:
 		self.server = s
 	def move(self, vel, dt):
 		"""Moves the listener."""
-		self.position += vel*dt
+		pygame.Vector3(self.position)
+		self.position += pygame.Vector3(vel)*dt
 		self.environment.position = tuple(self.position)
